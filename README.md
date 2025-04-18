@@ -22,6 +22,9 @@ DATABASE_URL="postgresql://covid_prisma:covid19sucks!@localhost:5432/covid?schem
 
 If for some reason you have PostgreSQL running on a different port than `5432` then make sure that's reflected as well.
 
+---
+At this point, your database should be setup. You can choose to populate your database now or later.
+
 # Data population
 To populate the database with data, use the custom python script. In order to run it, you’d need to install [Python](https://www.python.org/downloads/) on your device, and [download the script along with the dependency list](https://github.com/seshunASU/covid-visualizer/releases/download/data_population/data_populate.zip). Once you extract the zip, you’d need to download [Google’s Covid-19 Open Data](https://health.google.com/covid-19/open-data/raw-data) (the .json for Epidemiology) and place it into the folder. In the end it should look like this:
 ![image](https://github.com/user-attachments/assets/241df54c-e6eb-4e41-ba7f-86f14bb7bc2f)
