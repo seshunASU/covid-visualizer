@@ -1,5 +1,5 @@
 ## Requirements
-- nodejs (npm) needs to be installed (npm)
+- nodejs (npm) needs to be installed
 - postgresql needs to be installed & running
 
 ## Installation & Development
