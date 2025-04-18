@@ -1,0 +1,22 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.map-container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+path {
+    transition: fill 0.2s;
+}
+
+path:hover {
+    fill: #aaa;
+}
+
+.tooltip {
+    min-width: 150px;
+    transition: opacity 0.2s;
+}
