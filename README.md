@@ -1,10 +1,14 @@
+## Requirements
+- nodejs (npm) needs to be installed (npm)
+- postgresql needs to be installed & running
+
 ## Installation & Development
 
-Install dependencies with `npm install` (or `pnpm install` or `yarn`)
+Install dependencies with `npm install`
+
+Create & populate the database if you haven't already (instructions [here!](https://github.com/seshunASU/covid-visualizer/blob/docs/README.md))
 
 Then ensure the database is up-to-date by running `npx prisma migrate dev`
-
-Populate the database if you haven't already (instructions [here!](https://github.com/seshunASU/covid-visualizer/blob/docs/README.md))
 
 Finally, start a development server:
 ```bash
