@@ -48,6 +48,8 @@
   let tooltipPosition = { x: 0, y: 0 };
   let countryNameMap: Record<string, string> = {};
 
+  let minCount = 0;
+
   // Create map svg
   const projection = geoMercator()
     .scale(150)
@@ -85,7 +87,7 @@
       if (queryAbortController) queryAbortController.abort();
       queryAbortController = new AbortController();
 
-      const response = await fetch(`/api/covid-data?start=${startDate.toISOString()}&end=${endDate.toISOString()}`, {signal: queryAbortController.signal});
+      const response = await fetch(`/api/covid-data?start=${startDate.toISOString()}&end=${endDate.toISOString()}&minCount=${minCount}`, {signal: queryAbortController.signal});
       if (!response.ok) throw new Error("Failed to load COVID data");
       
       covidData = await response.json();
@@ -312,25 +314,42 @@
             </div>
           </div>
           
-          <div class="slider-wrapper mt-6">
-            <RangeSlider
-              min={0}
-              max={totalDays}
-              values={sliderRange}
-              float
-              range
-              pips
-              pipstep={Math.ceil(totalDays / 16)}
-              pushy
-              springValues={{ stiffness: 0.5, damping: 0.9 }}
-              on:change={handleDateRangeChange}
-              first="label"
-              last="label"
-              formatter={formatDateLabel}
-            />
-          </div>
+        <div class="slider-wrapper mt-6">
+          <RangeSlider
+            min={0}
+            max={totalDays}
+            values={sliderRange}
+            float
+            range
+            pips
+            pipstep={Math.ceil(totalDays / 16)}
+            pushy
+            springValues={{ stiffness: 0.5, damping: 0.9 }}
+            on:change={handleDateRangeChange}
+            first="label"
+            last="label"
+            formatter={formatDateLabel}
+          />
+        </div>
+        <div class="mt-4 flex items-center space-x-2">
+          <label for="minCount" class="text-sm">Min Count:</label>
+          <input
+            type="range"
+            id="minCount"
+            min="0"
+            max="1000000"
+            step="1000"
+            value={minCount}
+    	    on:input={(e) => {
+            minCount = +e.currentTarget.value;
+            loadCovidData();
+    }}
+          />
+          <span class="w-12 text-right">{minCount}</span>
         </div>
       </div>
+    </div>
+
 
       <!-- Mode selection -->
       <div class="mode-controls ml-4 flex flex-col space-y-2">
