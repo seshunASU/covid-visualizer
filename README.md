@@ -1,3 +1,5 @@
+Database dump: https://drive.google.com/file/d/10xg9cM9yq_Q0TWvZxVMShrCiISa7YP3s/view?usp=sharing
+
 ## Requirements
 - nodejs (npm) needs to be installed
 - postgresql needs to be installed & running
