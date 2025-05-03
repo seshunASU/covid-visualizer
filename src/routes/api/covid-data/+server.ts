@@ -39,8 +39,8 @@ export const GET = async ({ url }) => {
               SUM("count") AS total_count
             FROM ${table}
             WHERE "date" BETWEEN $1 AND $2
-              AND "count" >= $3
-            GROUP BY country;
+            GROUP BY country
+	    HAVING SUM("count") >= $3;
             `,
             startDate,
             endDate,
